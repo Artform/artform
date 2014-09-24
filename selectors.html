@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>CSS Selectors</title>
+	<style type="text/css">
+	.box { height: 1em; width: 20%; padding: 5px; border:1px solid #000; display: block; float:left; margin: 5px; }
+	.red { background:red;}
+	.selection { clear: both; border-top: 1px solid #000 }
+	</style>
+</head>
+<body>
+<div class="holder">
+
+	<div class="box special" id="one">1 (#one.special)</div>
+	<div class="box special">2 (.special)</div>
+	<div class="box">3</div>
+	<div class="box special" id="four">4 (#four.special)</div>
+	<div class="box special">5 (.special)</div>
+	<div class="box">6</div>
+	<div class="box">7</div>
+	<div class="box special">8 (.special)</div>
+
+	<ul class="selection">
+		<li>ID Selection:
+			<ul>
+				<li><a href="#one" id="sel_one">#one</a></li>
+				<li><a href="#four" id="sel_four">#four</a></li>
+			</ul>
+		</li>
+		<li><a href="#" id="sel_special">.special (class selector)</a></li>
+		<li><a href="#" id="sel_boxes">.box (class selector)</a></li>
+		<li></li>
+	</ul>
+</div>
+
+<script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+<script type="text/javascript">
+$(document).ready(function() {
+	$("#sel_one").click(function() {
+		$('#one').toggleClass('red');
+	});
+	$("#sel_four").click(function() {
+		$('#four').toggleClass('red');
+	});
+	$("#sel_special").click(function() {
+		$('.special').toggleClass('red');
+	});
+	$("#sel_boxes").click(function() {
+		$('.box').toggleClass('red');
+	});
+});
+</script>
+
+</body>
+</html>
