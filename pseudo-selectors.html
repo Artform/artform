@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>CSS Pseudo-Selectors</title>
+	<link rel="stylesheet" href="stylesheets/styles.css">
+	<style type="text/css">
+	body { font-size: 18pt; }
+	hr { clear: both; margin: 1em 0; }
+	.intro {
+		float:left;
+		width:50%;
+		clear:left;
+	} .box { 
+		height: 1em; 
+		width: 21%; 
+		padding: 1%; 
+		display: block; 
+		float:left; 
+		margin: 1%; 
+		color:black;
+		text-align: center;
+		line-height: 1em;
+		background: #ddd;
+		border-bottom: black 2px solid;
+		border-top: black 2px solid;
+		transition:1s ease all;
+	} .on { background:yellow;}
+	.selection { float: left; width: 50%; }
+	.special { border-bottom: red 2px solid; }
+	#one, #four { border-top: blue 2px solid; }
+	</style>
+</head>
+<body>
+
+<!-- .wrapper is used to layout our content so it's centred on larger screens -->
+<div class="wrapper">
+	<h1>Pseudo-Selectors</h1>
+	<!-- This area contains the box objects -->
+	<div id="boxes">
+		<div class="box special" id="one">1</div>
+		<div class="box special">2</div>
+		<div class="box">3</div>
+		<div class="box special" id="four">4</div>
+		<div class="box special">5</div>
+		<div class="box">6</div>
+		<div class="box">7</div>
+		<div class="box">8</div>
+		<div class="box">9</div>
+		<div class="box special">10</div>
+		<div class="box">11</div>
+		<div class="box special">12</div>
+	</div>
+	
+	<hr>
+	<div class="intro">
+		<p>Use the links on the right to reveal toggle the boxes associated with the selector.</p>
+		<p>A red border indicates the <em>special</em> class is applied. Blue indicates an <em>ID</em> has been applied.</p>
+		<p>Tap any box above to clear all selections</p>
+		<p>Pseudo-Selectors are used for selecting objects according to a particular case. More examples of these (which are not covered here) are <em>:hover</em>, <em>:focus</em>, <em>:last-of-type</em>, and many more.</p>
+	</div>
+
+	<!-- This area contains the links within an unordered list -->
+	<div class="selection">
+		<ul>
+			<li>Toggle all boxes using nth-child
+				<ul>
+					<li><a href="#" rel=".box:nth-child(odd)">.box:nth-child(odd)</a> - odd boxes</li>
+					<li><a href="#" rel=".box:nth-child(even)">.box:nth-child(even)</a> - even boxes</li>
+					<li><a href="#" rel=".box:nth-child(3n)">.box:nth-child(3n)</a> - every third box</li>
+					<li><a href="#" rel=".special:nth-child(odd)">.special:nth-child(odd)</a> - odd boxes with special class</li>
+					<li><a href="#" rel=".special:nth-child(even)">.special:nth-child(even)</a> - even boxes with special class</li>
+				</ul>
+			</li>
+			<li>More complex examples:
+				<ul>
+					<li><a href="#" rel="ul ul li:first-child">ul ul li:first-child</a> - first list item in each unordered sublist</li>
+					<li><a href="#" rel="#boxes .box:last-child">#boxes .box:last-child</a> - last box</li>
+				</ul>
+			</li>
+		</ul>
+	</div>
+
+</div>
+
+<!-- JavaScript to control interaction is below -->
+<script src="javascripts/jquery-2.1.1.min.js"></script>
+<script type="text/javascript">
+$(document).ready(function() {
+	// Use the value in the link's rel tag to target
+	$('a').click(function(){
+		var rel = $(this).attr('rel');
+		$(rel).toggleClass('on');
+	});
+	$('.box').click(function() {
+		$('.on').removeClass('on');
+	})
+});
+</script>
+
+</body>
+</html>

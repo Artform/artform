@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>CSS Selectors</title>
+	<link rel="stylesheet" href="stylesheets/styles.css">
+	<style type="text/css">
+	body { font-size: 18pt; }
+	hr { clear: both; margin: 1em 0; }
+	.intro {
+		float:left;
+		width:50%;
+		clear:left;
+	} .box { 
+		height: 1em; 
+		width: 21%; 
+		padding: 1%; 
+		display: block; 
+		float:left; 
+		margin: 1%; 
+		color:black;
+		text-align: center;
+		line-height: 1em;
+		background: #ddd;
+		border-bottom: black 2px solid;
+		border-top: black 2px solid;
+		transition:1s ease all;
+	} .on { background:yellow;}
+	.selection { float: left; width: 50%; }
+	.special { border-bottom: red 2px solid; }
+	#one, #four { border-top: blue 2px solid; }
+	</style>
+</head>
+<body>
+
+<!-- .wrapper is used to layout our content so it's centred on larger screens -->
+<div class="wrapper">
+	<h1>Classes &amp; IDs</h1>
+	<!-- This area contains the box objects -->
+	<div class="box special" id="one">1</div>
+	<div class="box special">2</div>
+	<div class="box">3</div>
+	<div class="box special" id="four">4</div>
+	<div class="box special">5</div>
+	<div class="box">6</div>
+	<div class="box">7</div>
+	<div class="box special">8</div>
+	
+	<hr>
+	<div class="intro">
+		<p>Use the links on the right to reveal toggle the boxes associated with the selector.</p>
+		<p>A red border indicates the <em>special</em> class is applied. Blue indicates an <em>ID</em> has been applied.</p>
+		<p>Tap any box above to clear all selections</p>
+	</div>
+
+	<!-- This area contains the links within an unordered list -->
+	<div class="selection">
+		<ul>
+			<li>Toggle boxes with an ID applied:
+				<ul>
+					<li><a href="#one" id="sel_one">#one</a></li>
+					<li><a href="#four" id="sel_four">#four</a></li>
+				</ul>
+			</li>
+			<li>Toggle boxes with a class applied
+				<ul>
+					<li><a href="#" id="sel_special">.special (class selector)</a></li>
+					<li><a href="#" id="sel_boxes">.box (all boxes have a box class)</a></li>
+				</ul>
+			</li>
+		</ul>
+	</div>
+
+</div>
+
+<!-- JavaScript to control interaction is below -->
+<script src="javascripts/jquery-2.1.1.min.js"></script>
+<script type="text/javascript">
+$(document).ready(function() {
+	$("#sel_one").click(function() {
+		$('#one').toggleClass('on');
+	});
+	$("#sel_four").click(function() {
+		$('#four').toggleClass('on');
+	});
+	$("#sel_special").click(function() {
+		$('.special').toggleClass('on');
+	});
+	$("#sel_boxes").click(function() {
+		$('.box').toggleClass('on');
+	});
+	$('.box').click(function() {
+		$('.box').removeClass('on');
+	})
+});
+</script>
+
+</body>
+</html>
