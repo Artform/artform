@@ -1,6 +1,4 @@
-artform
-=======
+Web Design iBook Figures
+========================
 
-Test playground
-
-I'm just learning this! *Hello World!*
+The following files are used as figures for various chapters.
